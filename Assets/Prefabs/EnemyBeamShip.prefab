@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 6.6721735, y: 6.48995781, z: 1}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 425006}
@@ -289,9 +289,10 @@ MonoBehaviour:
   projectileSpeed: 0
   spreadAngle: 0
   shootingRate: 1
-  volleyReloadRate: 2
+  volleyReloadRate: 3.79999995
   volleyLength: 1
-  spawnCooldownPenalty: 1
+  tracerLength: 1.5
+  spawnCooldownPenalty: 2
   minVolume: .0799999982
   maxVolume: .0900000036
   isShotSoundEnabled: 1
@@ -400,7 +401,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25195c71a925baf4f819ac5b5d730e99, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: .498039216}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

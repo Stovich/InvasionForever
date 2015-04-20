@@ -72,13 +72,13 @@ public class PlayerScript : MonoBehaviour {
         EnemyScript enemy = collision.gameObject.GetComponent<EnemyScript>();
         if (enemy != null) {
             HealthScript enemyHealth = enemy.GetComponent<HealthScript>();
-            if (enemyHealth != null) enemyHealth.Damage(3);
+            if (enemyHealth != null) enemyHealth.Damage(1000);
             damagePlayer = true;
         }
 
         if (damagePlayer) {
             HealthScript playerHealth = this.GetComponent<HealthScript>();
-            if (playerHealth != null) playerHealth.Damage(3);
+            if (playerHealth != null) playerHealth.Damage(1);
         }
     }
 

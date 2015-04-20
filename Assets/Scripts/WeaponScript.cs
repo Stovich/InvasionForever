@@ -10,6 +10,7 @@ public class WeaponScript : MonoBehaviour {
     public float shootingRate = 0.25f;
     public float volleyReloadRate = 3f;
     public float volleyLength = 1f;
+    public float tracerLength = 1.5f;
     public float spawnCooldownPenalty = 1f;
     public float minVolume = 0.1f;
     public float maxVolume = 0.15f;
@@ -22,6 +23,7 @@ public class WeaponScript : MonoBehaviour {
     private AudioSource audioSource;
     private float shootCooldown;
     private float volleyCooldown;
+    private float spawnPenaltyCounter;
 
     void Awake() {
         audioSource = GetComponent<AudioSource>();
@@ -30,20 +32,25 @@ public class WeaponScript : MonoBehaviour {
 	void Start () {
         //set how long before newly spawned entity can attack.
         shootCooldown = spawnCooldownPenalty;
-        volleyCooldown = (spawnCooldownPenalty + Random.Range(0f,volleyReloadRate * 2f));
+        volleyCooldown = (volleyReloadRate + Random.Range(0f, spawnCooldownPenalty));
+        spawnPenaltyCounter = spawnCooldownPenalty;
 	}
 	
 	void Update () {
         //tick remaining reload time down
-        if (shootCooldown > 0) {
-            shootCooldown = shootCooldown - Time.deltaTime;
+        if (spawnPenaltyCounter <= 0) {
+            if (shootCooldown > 0) {
+                shootCooldown = shootCooldown - Time.deltaTime;
+            }
+            volleyCooldown = volleyCooldown - Time.deltaTime;
         }
-        volleyCooldown = volleyCooldown - Time.deltaTime;
+        else
+            spawnPenaltyCounter = spawnPenaltyCounter - Time.deltaTime;
 	}
 
     public void Attack(bool isEnemy) {
         //fire the weapon
-        if (isLoaded() && CanAttack) {
+        if (spawnPenaltyCounter <= 0f && isLoaded() && CanAttack) {
             shootCooldown = shootingRate;
             //Create a new shot
             Transform shotTransform = Instantiate(shotPrefab) as Transform;
@@ -86,17 +93,19 @@ public class WeaponScript : MonoBehaviour {
                     GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
                 return true;
             }
-            else {
+            else if (volleyCooldown <= volleyLength + tracerLength) {
                 if (hasBeamTracer)
                     GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
                 return false;
             }
+            else {
+                if (hasBeamTracer)
+                    GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+                return false;
+            }
         }
-        else {
-            if (hasBeamTracer)
-                GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        else
             return true;
-        }
     }
 
     public bool CanAttack {

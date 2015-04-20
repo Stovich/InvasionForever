@@ -292,10 +292,15 @@ MonoBehaviour:
   projectileSpeed: 3
   spreadAngle: .300000012
   shootingRate: .00999999978
+  volleyReloadRate: 3
+  volleyLength: 1
+  tracerLength: 1.5
   spawnCooldownPenalty: 1
   minVolume: .0299999993
   maxVolume: .0299999993
   isShotSoundEnabled: 0
+  mustReload: 0
+  hasBeamTracer: 0
 --- !u!114 &11472698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e57829a28d1044781b7812d5e26ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 1
   isEnemy: 0
   ricochetSound01: {fileID: 8300000, guid: 13cfecf5b70ff18419678ab172d1b660, type: 3}
   ricochetSound02: {fileID: 8300000, guid: 988f5d0d7f50d4b4ab7e8ef805291644, type: 3}

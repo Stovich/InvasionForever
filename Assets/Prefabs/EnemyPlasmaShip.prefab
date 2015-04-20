@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 9.34926414, y: 1.77177227, z: 1}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 430676}
@@ -311,9 +311,10 @@ MonoBehaviour:
   shotPrefab: {fileID: 468562, guid: fbb9ce657b28f38438417e7d7f36cc69, type: 2}
   projectileSpeed: -3
   spreadAngle: .400000006
-  shootingRate: .25
+  shootingRate: .230000004
   volleyReloadRate: 2
   volleyLength: 1.25
+  tracerLength: 1.5
   spawnCooldownPenalty: 1
   minVolume: .0799999982
   maxVolume: .0900000036
