@@ -319,6 +319,7 @@ MonoBehaviour:
   maxVolume: .0900000036
   isShotSoundEnabled: 1
   mustReload: 1
+  hasBeamTracer: 0
 --- !u!212 &21217400
 SpriteRenderer:
   m_ObjectHideFlags: 1
